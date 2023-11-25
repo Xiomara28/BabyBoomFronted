@@ -1,0 +1,26 @@
+<div class="insert-container">
+  <h2>{{ modoInsertar ? 'Insert Medic' : 'Edit Medic' }}</h2>
+
+  <form [formGroup]="customMedicoForm" (ngSubmit)="addCustomMedico()">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Medic Name" formControlName="nombre" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Medic Lastname" formControlName="apellido" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Specialism" formControlName="especialidad" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Email" formControlName="email" />
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit">{{ modoInsertar ? 'Insert' : 'Update' }}</button>
+      <button mat-raised-button color="accent" routerLink="/Medico">Cancel</button>
+    </div>
+  </form>
+</div>

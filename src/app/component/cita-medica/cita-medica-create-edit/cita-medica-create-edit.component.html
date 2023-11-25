@@ -1,0 +1,62 @@
+<div class="custom-insert-container">
+  <h2>{{ modoInsertar ? 'Add New Cita Medica' : 'Update Cita Medica' }}</h2>
+
+  <form [formGroup]="customCitaMedicaForm" (ngSubmit)="addCustomCitaMedica()">
+    <!-- Agregado el campo idBebe solo cuando no estás insertando un nuevo bebé -->
+    <mat-form-field *ngIf="!modoInsertar">
+      <mat-label>Id</mat-label>
+      <input matInput formControlName="idCitaMedica" readonly="true">
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Lugar </mat-label>
+      <input matInput formControlName="lugar" placeholder="Enter lugar" />
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Nombre </mat-label>
+      <input matInput formControlName="nombreClinica" placeholder="Enter nombreClinica" />
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Titulo Cita </mat-label>
+      <input matInput formControlName="tituloCita" placeholder="Enter tituloCita" />
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Fecha</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder="Enter fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Apoderado</mat-label>
+      <mat-select formControlName="idApoderado" placeholder="Select apoderado">
+        <mat-option *ngFor="let apoderado of apoderados" [value]="apoderado.idApoderado">
+          {{ apoderado.nombre + ' ' + apoderado.apellido }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Medico</mat-label>
+      <mat-select formControlName="idMedico" placeholder="Select medico">
+        <mat-option *ngFor="let medic of medico" [value]="medic.idMedico">
+          {{ medic.nombre + ' ' + medic.apellido }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+    <div class="custom-button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="customCitaMedicaForm.invalid">
+        {{ modoInsertar ? 'Add Custom CitaMedica' : 'Update Custom CitaMedica' }}
+      </button>
+      <button mat-raised-button color="accent" routerLink="/citaMedica" class="custom-back-button">
+        Back to CitaMedicas
+      </button>
+    </div>
+  </form>
+</div>

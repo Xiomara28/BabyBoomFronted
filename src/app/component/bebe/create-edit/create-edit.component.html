@@ -1,0 +1,41 @@
+<div class="custom-insert-container">
+  <h2>{{ modoInsertar ? 'Add New Bebé' : 'Update Bebé' }}</h2>
+
+  <form [formGroup]="customBebeForm" (ngSubmit)="addCustomBebe()">
+    <!-- Agregado el campo idBebe solo cuando no estás insertando un nuevo bebé -->
+    <mat-form-field *ngIf="!modoInsertar">
+      <mat-label>Id</mat-label>
+      <input matInput formControlName="idBebe" readonly="true">
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Nombre Bebé</mat-label>
+      <input matInput formControlName="nombreBebe" placeholder="Enter bebé name" />
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaBebe" placeholder="Enter fecha de nacimiento">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Apoderado</mat-label>
+      <mat-select formControlName="apoderadoId" placeholder="Select apoderado">
+        <mat-option *ngFor="let apoderado of apoderados" [value]="apoderado.idApoderado">
+          {{ apoderado.nombre + ' ' + apoderado.apellido }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="custom-button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="customBebeForm.invalid">
+        {{ modoInsertar ? 'Add Custom Bebé' : 'Update Custom Bebé' }}
+      </button>
+      <button mat-raised-button color="accent" routerLink="/bebe" class="custom-back-button">
+        Back to Bebés
+      </button>
+    </div>
+  </form>
+</div>

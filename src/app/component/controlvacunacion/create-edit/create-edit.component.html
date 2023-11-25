@@ -1,0 +1,32 @@
+<div class="insert-container">
+  <h2>{{ modoInsertar ? 'Insert Vaccination Control' : 'Edit Vaccination Control' }}</h2>
+
+  <form [formGroup]="customControlVacunacionForm" (ngSubmit)="addCustomControlVacunacion()">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Date" formControlName="fecha" [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Vaccine Type" formControlName="tipoVacuna" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Vaccination Status" formControlName="estadoVacunacion" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Vaccinator Name" formControlName="nombreVacunador" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Location" formControlName="lugar" />
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit">{{ modoInsertar ? 'Insert' : 'Update' }}</button>
+      <button mat-raised-button color="accent" routerLink="/ControlVacunacion">Cancel</button>
+    </div>
+  </form>
+</div>

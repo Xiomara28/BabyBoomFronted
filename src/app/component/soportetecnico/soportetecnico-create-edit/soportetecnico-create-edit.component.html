@@ -1,0 +1,26 @@
+<div class="custom-insert-container">
+  <h2>{{ modoInsertar ? 'Add New Soporte' : 'Update Type of Soporte' }}</h2>
+
+  <form [formGroup]="customSoporteTecnicoForm" (ngSubmit)="addCustomSoporteTecnico()">
+    <!-- Added the idEnfermedad field only when you're not inserting a new type of disease -->
+    <mat-form-field *ngIf="!modoInsertar">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="idSoporte" readonly="true">
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Type Name</mat-label>
+      <input matInput formControlName="nombreSoporte" placeholder="Enter type  name" />
+    </mat-form-field>
+
+
+    <div class="custom-button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="customSoporteTecnicoForm.invalid">
+        {{ modoInsertar ? 'Insert' : 'Update ' }}
+      </button>
+      <button mat-raised-button color="accent" routerLink="/soporteTecnico" class="custom-back-button">
+        Back to Types of Diseases
+      </button>
+    </div>
+  </form>
+</div>

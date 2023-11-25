@@ -1,0 +1,64 @@
+<div class="custom-insert-container">
+  <h2>{{ modoInsertar ? 'Add New Problema' : 'Update Problema' }}</h2>
+
+  <form [formGroup]="customProblemaForm" (ngSubmit)="addCustomProblema()">
+    <!-- Agregado el campo idBebe solo cuando no estás insertando un nuevo bebé -->
+    <mat-form-field *ngIf="!modoInsertar">
+      <mat-label>Id</mat-label>
+      <input matInput formControlName="idProblema" readonly="true">
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Titulo </mat-label>
+      <input matInput formControlName="titulo" placeholder="Enter titulo" />
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>descripcion </mat-label>
+      <input matInput formControlName="descripcion" placeholder="Enter descripcion" />
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>fechaInicio</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaInicio" placeholder="Enter fechaInicio">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>fechaFin</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaFin" placeholder="Enter fechaFin">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Apoderado</mat-label>
+      <mat-select formControlName="idApoderado" placeholder="Select apoderado">
+        <mat-option *ngFor="let apoderado of apoderados" [value]="apoderado.idApoderado">
+          {{ apoderado.nombre + ' ' + apoderado.apellido }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Soporte</mat-label>
+      <mat-select formControlName="idSoporteTecnico" placeholder="Select soporteTecnico">
+        <mat-option *ngFor="let soporteTecnic of soporteTecnico" [value]="soporteTecnic.idSoporte">
+          {{ soporteTecnic.nombreSoporte}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+    <div class="custom-button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="customProblemaForm.invalid">
+        {{ modoInsertar ? 'Add Custom Problema' : 'Update Custom Problema' }}
+      </button>
+      <button mat-raised-button color="accent" routerLink="/problemas" class="custom-back-button">
+        Back to Bebés
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="custom-insert-container">
+    <h2>{{ modoInsertar ? 'Agregar Nueva Relación' : 'Actualizar Relación' }}</h2>
+
+    <form [formGroup]="customRelacionForm" (ngSubmit)="addCustomRelacion()">
+        <mat-form-field *ngIf="!modoInsertar">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>
+
+        <mat-form-field class="custom-form-field">
+            <mat-label>Bebe</mat-label>
+            <mat-select formControlName="bebe" placeholder="Selecciona un bebé">
+                <mat-option *ngFor="let bebe of bebes" [value]="bebe">{{ bebe.nombreBebe }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="custom-form-field">
+            <mat-label>Tipo Enfermedad</mat-label>
+            <mat-select formControlName="tipoEnfermedad" placeholder="Selecciona un tipo de enfermedad">
+                <mat-option *ngFor="let tipoEnfermedad of tiposEnfermedad" [value]="tipoEnfermedad">{{ tipoEnfermedad.nombreEnfermedad }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="custom-button-container">
+            <button mat-raised-button color="primary" type="submit" [disabled]="customRelacionForm.invalid">
+                {{ modoInsertar ? 'Agregar Relación Personalizada' : 'Actualizar Relación Personalizada' }}
+            </button>
+            <button mat-raised-button color="accent" routerLink="/tipoEnfermedadBebe" class="custom-back-button">
+                Volver a Relaciones Personalizadas
+            </button>
+        </div>
+    </form>
+</div>

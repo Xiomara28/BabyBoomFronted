@@ -1,0 +1,14 @@
+<!-- bebe-tipo-enfermedad-listar.component.html -->
+
+<div class="bebe-tipo-enfermedad-list">
+  <h2>Lista de BebeTipoEnfermedades</h2>
+  <ul>
+    <li *ngFor="let bebeTipoEnfermedad of bebeTipoEnfermedades">
+      <strong>ID:</strong> {{ bebeTipoEnfermedad.idTipoEnfermedadBebe }} <br>
+      <strong>Bebe:</strong> {{ bebeTipoEnfermedad.bebe.nombreBebe }} <!-- Ajusta según la estructura de tu modelo Bebe -->
+      <strong>Tipo de Enfermedad:</strong> {{ bebeTipoEnfermedad.tipoEnfermedad.nombreEnfermedad }} <br>
+      <!-- Agrega más propiedades según tu modelo BebeTipoEnfermedad -->
+      <hr>
+    </li>
+  </ul>
+</div>

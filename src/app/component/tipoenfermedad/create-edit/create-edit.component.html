@@ -1,0 +1,30 @@
+<div class="custom-insert-container">
+  <h2>{{ modoInsertar ? 'Add New Type of Disease' : 'Update Type of Disease' }}</h2>
+
+  <form [formGroup]="customTipoEnfermedadForm" (ngSubmit)="addCustomTipoEnfermedad()">
+    <!-- Added the idEnfermedad field only when you're not inserting a new type of disease -->
+    <mat-form-field *ngIf="!modoInsertar">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="idEnfermedad" readonly="true">
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Type of Disease Name</mat-label>
+      <input matInput formControlName="nombreEnfermedad" placeholder="Enter type of disease name" />
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Type</mat-label>
+      <input matInput formControlName="tipoTipoEnfermedad" placeholder="Enter type" />
+    </mat-form-field>
+
+    <div class="custom-button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="customTipoEnfermedadForm.invalid">
+        {{ modoInsertar ? 'Add Type of Disease' : 'Update Type of Disease' }}
+      </button>
+      <button mat-raised-button color="accent" routerLink="/tipoEnfermedad" class="custom-back-button">
+        Back to Types of Diseases
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,34 @@
+<div class="custom-insert-container">
+  <h2>{{ modoInsertar ? 'Add New Apoderado' : 'Update Apoderado' }}</h2>
+
+  <form [formGroup]="customApoderadoForm" (ngSubmit)="addCustomApoderado()">
+    <mat-form-field *ngIf="!modoInsertar">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="idApoderado" readonly="true">
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="nombre" placeholder="Enter name" />
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="apellido" placeholder="Enter last name" />
+    </mat-form-field>
+
+    <mat-form-field class="custom-form-field">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Enter email" />
+    </mat-form-field>
+
+    <div class="custom-button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="customApoderadoForm.invalid">
+        {{ modoInsertar ? 'Add Custom Apoderado' : 'Update Custom Apoderado' }}
+      </button>
+      <button mat-raised-button color="accent" routerLink="/apoderados" class="custom-back-button">
+        Back to Apoderados
+      </button>
+    </div>
+  </form>
+</div>

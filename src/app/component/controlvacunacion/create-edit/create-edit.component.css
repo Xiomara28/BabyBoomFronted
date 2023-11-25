@@ -1,0 +1,28 @@
+.insert-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.insert-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-form-field {
+  margin-bottom: 15px;
+}

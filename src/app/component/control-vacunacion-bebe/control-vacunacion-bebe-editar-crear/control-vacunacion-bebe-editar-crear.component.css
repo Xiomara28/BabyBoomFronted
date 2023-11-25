@@ -1,0 +1,31 @@
+.custom-insert-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .custom-form-field {
+    width: 100%;
+  }
+  
+  .custom-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .custom-back-button {
+    margin-left: 10px;
+  }
+  
